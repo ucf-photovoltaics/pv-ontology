@@ -1,0 +1,58 @@
+name: Pull Most Recent MDS-Onto
+
+on:
+  schedule:
+    # Runs daily at 00:00 UTC (adjust as needed, e.g., '0 0 * * *')
+    # You can use a cron expression to define the schedule.
+    # For example, '0 */6 * * *' would run every 6 hours.
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+
+jobs:
+  download_and_commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Use the PAT to allow pushing changes back to the repo
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Download MDS_Onto JSON-LD
+        run: |
+          FILE_URL="https://cwrusdle.bitbucket.io/files/MDS_Onto-v0.3.0.5.jsonld"
+          DEST_DIR="ontology" # Create a directory for your ontology files
+          DEST_FILE="$DEST_DIR/MDS_Onto.jsonld" # Renaming for consistency, feel free to keep original name
+
+          echo "Creating directory $DEST_DIR if it doesn't exist..."
+          mkdir -p "$DEST_DIR"
+
+          echo "Downloading $FILE_URL to $DEST_FILE..."
+          curl -o "$DEST_FILE" "$FILE_URL"
+
+          if [ $? -eq 0 ]; then
+            echo "Download successful."
+          else
+            echo "Error during download."
+            exit 1
+          fi
+
+      - name: Check for changes and commit
+        id: commit_changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          # Check if there are any changes to commit
+          if ! git diff --staged --quiet; then
+            echo "Changes detected. Committing and pushing..."
+            git commit -m "Automated: Update MDS-Onto from Bitbucket"
+            git push
+          else
+            echo "No changes detected. Skipping commit and push."
+          fi
+        env:
+          # Explicitly provide GITHUB_TOKEN for push operation if needed
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
