@@ -14,16 +14,16 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      # --- OPTIONAL: Explicit initial pull if you suspect checkout isn't fresh enough or for specific merging strategies ---
-      - name: Ensure local branch is up-to-date (Initial Pull)
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin main # Or master, or your TARGET_BRANCH
+      # --- OPTIONAL: Explicit initial pull if you suspect checkout isn't fresh enough or for specific merging strategies --- 
+      - name: Pull latest changes
+        run: git pull --rebase origin main
+
+      - name: Push changes
+        run: git push origin main
         # This step should use the same token as checkout if the repo is private or you need authenticated pull
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }} # Ensure token is available for git pull
-
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
