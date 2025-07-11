@@ -1,55 +1,92 @@
-name: Pull Latest MDS-Onto from Bitbucket
+# Name of the workflow as it appears in the GitHub Actions tab
+name: Pull Latest MDS-Onto
 
+# Define when this workflow should run
 on:
+  # Schedule: Runs automatically at a specific time
+  # This cron expression means "at 01:00 AM UTC every day"
+  # You can adjust this:
+  #   - '0 0 * * *' : Midnight UTC every day
+  #   - '0 */6 * * *' : Every 6 hours
+  #   - '0 0 1 * *' : First day of every month at midnight UTC
   schedule:
     - cron: '0 1 * * *'
+  
+  # workflow_dispatch: Allows you to manually trigger the workflow from the GitHub Actions tab
   workflow_dispatch:
 
+# Define the jobs that will run in this workflow
 jobs:
+  # This is a single job to handle downloading and committing the file
   download_and_commit:
+    # Specifies the runner environment for this job
     runs-on: ubuntu-latest
+
+    # Define the sequence of steps for this job
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Uses the GitHub Action to clone your repository
         with:
+          # The 'token' input is used to authenticate with GitHub.
+          # We use the secret 'GH_PAT' which stores your Personal Access Token.
+          # This token is crucial for both checking out and pushing changes.
           token: ${{ secrets.GH_PAT }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Python environment
+        uses: actions/setup-python@v5 # Uses the GitHub Action to set up Python
         with:
-          python-version: '3.x'
+          python-version: '3.x' # Specifies to use the latest Python 3 version available on the runner
 
       - name: Install Python dependencies
         run: |
+          # Upgrade pip to the latest version
           python -m pip install --upgrade pip
+          # Install necessary Python libraries for your script
           pip install requests beautifulsoup4 PyGithub packaging
 
-      - name: Run script to pull latest MDS-Onto
-        run: python scripts/pull_mds_onto_latest.py
+      - name: Run Python script to pull latest MDS-Onto
+        run: python scripts/pull_mds_onto_latest.py # Executes your Python script
         env:
+          # Pass the GitHub PAT as an environment variable to your Python script.
+          # This allows PyGithub inside your script to authenticate with GitHub.
           GH_PAT: ${{ secrets.GH_PAT }}
 
-      # --- ADD THESE NEW STEPS TO HANDLE PULL BEFORE PUSH ---
-      - name: Configure Git for merge/rebase
+      # --- Crucial steps to handle Git conflicts before pushing ---
+      # This addresses the "Updates were rejected" error.
+      # It pulls the latest changes from the remote and re-applies your local commit on top.
+      - name: Configure Git identity and Pull before Push
         run: |
-          git config user.name "TheAlgoDev"
-          git config user.email "brent.thompson@ucf.edu"
-          git pull --rebase origin main # Or master, or your TARGET_BRANCH
-          # The --rebase flag is generally preferred in CI/CD to maintain a linear history.
-          # If you prefer merge commits, use 'git pull origin main' instead.
+          # Set the committer's identity for any Git operations in this step
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          echo "Attempting to pull latest remote changes with rebase..."
+          # Pull the latest changes from the 'main' branch and rebase your local commits on top.
+          # This integrates remote changes without creating a merge commit, keeping history linear.
+          # IMPORTANT: Replace 'main' with 'master' if your default branch is master.
+          git pull --rebase origin main 
+          echo "Git pull --rebase completed. Checking status..."
+          git status
 
-      - name: Check for changes and push
-        id: push_changes # Add an ID to the step if you want to reference it later
+        env:
+          # The GITHUB_TOKEN is needed here for authenticated git pull if the repo is private
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Check for changes and Push to GitHub
+        id: push_changes # Assign an ID for potential future reference
         run: |
-          # The Python script already handled the add/commit.
-          # We just need to ensure the push happens.
-          # We also check if there are changes again, in case the rebase introduced conflicts
-          # or if no actual changes were made to the file content.
-          if ! git diff --quiet HEAD; then # Check if there are uncommitted changes or if rebase caused changes
-            echo "Changes detected after rebase. Pushing..."
-            git push
+          # This command checks if there's any difference between the current HEAD
+          # and its immediate parent. This effectively tells us if a new commit
+          # was made by our Python script that needs to be pushed.
+          if ! git diff --quiet HEAD^ HEAD; then
+            echo "New commit detected from the Python script. Pushing changes..."
+            # Push the changes to the 'main' branch on GitHub
+            # IMPORTANT: Replace 'main' with 'master' if your default branch is master.
+            git push origin main
+            echo "Changes pushed successfully."
           else
-            echo "No new changes or changes integrated by rebase. Skipping push."
+            echo "No new commit from the Python script to push (or changes were already integrated by rebase). Skipping push."
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }} # Ensure token is available for git push
+          # The GITHUB_TOKEN is essential for the git push operation
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
