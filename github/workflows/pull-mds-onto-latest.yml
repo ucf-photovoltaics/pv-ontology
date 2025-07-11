@@ -32,8 +32,8 @@ jobs:
       # --- ADD THESE NEW STEPS TO HANDLE PULL BEFORE PUSH ---
       - name: Configure Git for merge/rebase
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "TheAlgoDev"
+          git config user.email "brent.thompson@ucf.edu"
           git pull --rebase origin main # Or master, or your TARGET_BRANCH
           # The --rebase flag is generally preferred in CI/CD to maintain a linear history.
           # If you prefer merge commits, use 'git pull origin main' instead.
