@@ -2,10 +2,8 @@ name: Pull Latest MDS-Onto from Bitbucket
 
 on:
   schedule:
-    # Runs daily at 01:00 UTC. Adjust the cron expression as needed.
-    # For example, '0 0 * * *' for midnight UTC, or '0 */6 * * *' for every 6 hours.
     - cron: '0 1 * * *'
-  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+  workflow_dispatch:
 
 jobs:
   download_and_commit:
@@ -14,13 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # This token is crucial for pushing changes back to the repository
           token: ${{ secrets.GH_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x' # Use the latest stable Python 3 version
+          python-version: '3.x'
 
       - name: Install Python dependencies
         run: |
@@ -30,5 +27,29 @@ jobs:
       - name: Run script to pull latest MDS-Onto
         run: python scripts/pull_mds_onto_latest.py
         env:
-          # Pass the GitHub PAT to the Python script as an environment variable
           GH_PAT: ${{ secrets.GH_PAT }}
+
+      # --- ADD THESE NEW STEPS TO HANDLE PULL BEFORE PUSH ---
+      - name: Configure Git for merge/rebase
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main # Or master, or your TARGET_BRANCH
+          # The --rebase flag is generally preferred in CI/CD to maintain a linear history.
+          # If you prefer merge commits, use 'git pull origin main' instead.
+
+      - name: Check for changes and push
+        id: push_changes # Add an ID to the step if you want to reference it later
+        run: |
+          # The Python script already handled the add/commit.
+          # We just need to ensure the push happens.
+          # We also check if there are changes again, in case the rebase introduced conflicts
+          # or if no actual changes were made to the file content.
+          if ! git diff --quiet HEAD; then # Check if there are uncommitted changes or if rebase caused changes
+            echo "Changes detected after rebase. Pushing..."
+            git push
+          else
+            echo "No new changes or changes integrated by rebase. Skipping push."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }} # Ensure token is available for git push
