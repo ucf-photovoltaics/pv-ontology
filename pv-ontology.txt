@@ -1,0 +1,764 @@
+#####################
+
+### PV-MODULE ########
+
+#####################
+
+mds:PhotovoltaicModule a owl:Class ;
+    rdfs:label "Photovoltaic Module" ;
+    rdfs:subClassOf mds:Sample ;
+    skos:altLabel "Photovoltaic Module", "Module", "PV Module", "Solar Panel" ;
+    skos:definition "A photovoltaic module is a collection of solar cell circuits sealed in an environmentally protective laminate. Packaging of modules typically includes layering cells between materials such as glass for the front and back, a top and rear encapsulation layer, cells and interconnects, passivation layers and optical coatings, all enclosed in a metal frame. Performance of PV modules are generally rated according to their electrical outputs under standard test conditions. Modules are used in the field together as arrays that make up a power generation site. " ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:ModuleModel a owl:Class ;
+    rdfs:label "Module Model" ;
+    rdfs:subClassOf mds:ModelName ;
+    skos:altLabel "ModuleModel", "ModModel", "Model", "PVModel" ;
+    skos:definition "Signifier of series or line of products." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:PhotovoltaicModuleID a owl:Class ;
+    rdfs:label "Photovoltaic Module ID" ;
+    rdfs:subClassOf mds:SampleID ;
+    skos:altLabel "Photovoltaic Module ID", "Module ID", "PV Module ID" ;
+    skos:definition "Unique identifier given to solar panel." ;
+    mds:hasDomain "BuiltEnv", 
+                "Exposure", "NetSEM" ;
+    mds:hasSubDomain "PV-Module",
+                 "Acelerated", "" .
+
+mds:Cell a owl:Class ;
+    rdfs:label "Cell" ;
+    owl:disjointWith mds:PhotovoltaicModule ;
+    rdfs:subClassOf cco:ont00000995 ,
+                    mds:Sample ;
+    skos:altLabel "Cell" ;
+    skos:definition "A photovoltaic (PV) cell is a semiconductor device that converts optical power (i.e., $P_{in} = P_{opt}$) into electrical power (i.e., $P_{out} = P_{elect}$). A semiconductor absorber with the appropriate bandgap ($E_{g}$), selected to maximize power conversion from the solar spectrum, converts incident photons into electronic charge carriers (i.e., negatively charged electron and positively charged holes, or missing electrons in the valence band). Other parts (i.e., subcomponents or device building blocks) help transfer the charge carriers and eventually the current ($I$) and voltage ($V$) to an external circuit where energy ($E_{out}$) can be performed with this electrical power ($P_{out} = I cdot V$) over time, i.e., $E_{out} = int P_{out}(t) cdot dt$. These subcomponents help minize power conversion losses and therefore maximize the photoconversion efficiency ($eta = frac{P_{out}}{P_{in}}$). These PV cells are normally encapsulated and then electrically connected together in series (typically) or series-parallel configurations to to form PV module" ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:CellNumber a owl:Class ;
+    rdfs:label "Cell Number Total" ;
+    rdfs:subClassOf mds:Number ;
+    skos:altLabel "Cell Number Total" ;
+    skos:definition "Total number of solar cells in the module." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:CellNumberPerString a owl:Class ;
+    rdfs:label "Cells Per String" ;
+    rdfs:subClassOf mds:Number ;
+    skos:altLabel "Cell Number Per String" ;
+    skos:definition "The number of photovoltaic cells in series together per individual string. E.g., 60, 72, etc." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:CellNumberX a owl:Class ;
+    rdfs:label "Cell Number X" ;
+    rdfs:subClassOf mds:Number ;
+    skos:altLabel "Cell Number X" ;
+    skos:definition "Number of cells along the width of the module; number of cells in the shortest direction (i.e. 6, 8, 10)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:CellNumberY a owl:Class ;
+    rdfs:label "Cell Number Y" ;
+    rdfs:subClassOf mds:Number ;
+    skos:altLabel "Cell Number Y" ;
+    skos:definition "Number of cells along the length of the module; Number of cells in the longest direction (i.e. 10, 12, 20)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:CurrentAtMaximumPower a owl:Class ;
+    rdfs:label "Current At Maximum Power" ;
+    rdfs:subClassOf afe:AFR_0001856 ;
+    skos:altLabel "CurrentAtMaximumPower" ;
+    skos:definition "The current at max power measured by a current voltage processCurrent flowing between the positive and negative terminals under illumination when zero voltage appears accross these terminals." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module"  ;
+    qudt:applicableUnit unit:A .
+
+mds:CurrentShortCircuit a owl:Class ;
+    rdfs:label "Current Short Circuit" ;
+    rdfs:subClassOf afe:AFR_0001856 ;
+    skos:altLabel "CurrentShortCircuit" ;
+    skos:definition "Maximum current that a solar panel can produce when its positive and negative terminals are directly connected together, creating a short circuit, when the voltage across the panel is zero" ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module"  ;
+    qudt:applicableUnit unit:A .
+
+mds:FluorescencePattern a owl:Class ;
+    rdfs:label "Fluorescence Pattern" ;
+    rdfs:subClassOf cco:ont00000702 ;
+    skos:altLabel "FluorescencePattern" ;
+    skos:definition "An ultraviolet fluorescence (UVF) pattern that indicates various issues and degradation states within the module." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    cco:ont00001754 "https://ieeexplore.ieee.org/document/10925341".
+
+mds:ModuleReferenceRating a owl:Class ;
+    rdfs:label "Module Reference Rating" ;
+    rdfs:subClassOf cco:ont00000503 ;
+    skos:altLabel "ModuleReferenceRating" ;
+    skos:definition "Measurements of a module taken at Standard Test Conditions (STC) and 1000 W/m² irradiance." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:ModuleProperty a owl:Class ;
+    rdfs:label "Module Property" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "Photovoltaic Module Property" ;
+    skos:definition "A property of a PV module." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:PowerAtStandardTestConditions a owl:Class ;
+    rdfs:label "Power At Standard Test Conditions" ;
+    rdfs:subClassOf cco:ont00000503 ;
+    skos:altLabel "PowerAtStandardTestConditions", "PowerSTC" ;
+    skos:definition "Power at reference conditions." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    qudt:applicableUnit unit:W .
+
+mds:Voltage a owl:Class ;
+    rdfs:label "Voltage" ;
+    rdfs:subClassOf mds:Voltage ;
+    skos:altLabel "Module Voltage" ;
+    skos:definition "PV Module Voltage." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    qudt:applicableUnit unit:V .
+
+mds:VoltageAtMaximumPower a owl:Class ;
+    rdfs:label "Voltage At Maximum Power" ;
+    rdfs:subClassOf mds:Voltage ;
+    skos:altLabel "VoltageAtMaximumPower" , "vmp" ;
+    skos:definition "Module direct current voltage at the maximum power point under Standard Test Conditions (STC)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    qudt:applicableUnit unit:V .
+
+mds:OpenCircuitVoltage a owl:Class ;
+    rdfs:label "Photovoltaic Module Open Circuit Voltage" ;
+    rdfs:subClassOf mds:Voltage ;
+    skos:altLabel "VoltageOpenCircuit" , "voc";
+    skos:definition "Voltage potential across the postive and negative terminal under irradiation when zero current flows in or out of the terminals." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    qudt:applicableUnit unit:V .
+
+mds:ModuleConnector a owl:Class ;
+    rdfs:label "Module Connector" ;
+    rdfs:subClassOf cco:ont00000162 ;
+    skos:altLabel "ModuleConnector" , "leads";
+    skos:definition "Indicates which version of lead connection is used to connect panel. E.g., MC4, MC3, T4." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:Frame a owl:Class ;
+    rdfs:label "Frame" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel "Frame" ;
+    skos:definition "Used to fix, seal and hold a sample's components." , "In a PV module, it protects the module against the elements, enhance its durability, and facilitate its transportation and installation." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    cco:ont00001754 "https://www.ul.com/services/photovoltaic-module-frame-testing-and-certification#:~:text=Frames%20are%20an%20important%20feature,service%20life%20of%20PV%20modules." .
+
+mds:InterconnectionScheme a owl:Class ;
+    rdfs:label "Interconnection Scheme" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel "ModuleInterconnectionScheme" ;
+    skos:definition "Method used to wire cells together (RIBBON, SHINGLED, WIRE)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:JunctionBoxLocations a owl:Class ;
+    rdfs:label "Junction Box Locations" ;
+    rdfs:subClassOf mds:JunctionBox ;
+    skos:altLabel "JunctionBoxLocations" ;
+    skos:definition "Location on rear of module housing junction box(es). Location could be on module EDGE; CENTER or SPLIT are commonly seen on half-cell modules." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:NameplateCurrentAtMaximumPower a owl:Class ;
+    rdfs:label "Nameplate Current At Maximum Power" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "NameplateImp" ;
+    skos:definition "Current at maximum power point rated at STC." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:NameplateShortCircuitCurrent a owl:Class ;
+    rdfs:label "Nameplate Short Circuit Current" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "NameplaceIsc" ;
+    skos:definition "Short-circuit current rated at STC." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:NameplateMaximumPower a owl:Class ;
+    rdfs:label "Nameplate Maximum Power" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "NameplatePmp" ;
+    skos:definition "Maximum power rated at STC." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:NameplateOpenCircuitVoltage a owl:Class ;
+    rdfs:label "Nameplate Open Circuit Voltage" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "NameplateVoc" ;
+    skos:definition "Open-circuit voltage rated at STC." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:ModuleParallelStringsNumber a owl:Class ;
+    rdfs:label "Module Parallel Strings Number" ;
+    rdfs:subClassOf mds:Number ;
+    skos:altLabel "Parallel Strings Number" ;
+    skos:definition "Number of series connections present in the module. 1 if all cells in series, 2 or more otherwise." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:ModuleTemperatureCoefficientCurrent a owl:Class ;
+    rdfs:label "Module Temperature Coefficient Current" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "TemperatureCoefficientCurrent" ;
+    skos:definition "Reduction of some percent of ISC per degree Celsius. Rate at which current changes in response to a change in temperature." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:ModuleTemperatureCoefficientPower a owl:Class ;
+    rdfs:label "Module Temperature Coefficient Power" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "TemperatureCoefficientPower" ;
+    skos:definition "Reduction of some percent of PMP per degree Celsius. Rate at which power changes in response to a change in temperature." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:ModuleTemperatureCoefficientVoltage a owl:Class ;
+    rdfs:label "Module Temperature Coefficient Voltage" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:altLabel "TemperatureCoefficientVoltage" ;
+    skos:definition "Reduction of some percent of VOC per degree Celsius. Rate at which a voltage changes in response to a change in temperature." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:ModuleVariantCombination a owl:Class ;
+    rdfs:label "Module Variant Combination" ;
+    rdfs:subClassOf cco:ont00000686 ;
+    skos:altLabel "ModuleVariantCombination", "Combo", "combo" ;
+    skos:definition "Combination of module characteristics: manufacturer, encapsulant material, backsheet architecture, cell type and exposure type." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:Encapsulant a owl:Class ;
+    rdfs:label "Encapsulant" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    owl:disjointWith mds:PhotovoltaicModule ;
+    skos:altLabel "Encapsulant" ;
+    skos:definition "Adhesive material used to hold front sheet and back sheet together. Eg., EVA, POE, etc." ;
+    cco:ont00001754 "https://www.pveducation.org/pvcdrom/modules-and-arrays/module-materials#:~:text=EVA%20(ethyl%20vinyl%20acetate)%20is,and%20bond%20the%20module%20together." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:FrontSideEncapsulant a owl:Class ;
+    rdfs:label "Front Side Encapsulant" ;
+    rdfs:subClassOf mds:Encapsulant ;
+    skos:altLabel "FrontSideEncapsulant" ;
+    skos:definition "Front side of the module's encapsulant." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:EncapsulantModel a owl:Class ;
+    rdfs:label "Encapsulant Model" ;
+    rdfs:subClassOf mds:ModelID ;
+    skos:altLabel "EncapsulantModel" ;
+    skos:definition "Encapsulant identifier given by the supplier based on the encapsulant optical absorption property." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:BackSideEncapsulant a owl:Class ;
+    rdfs:label "Back Side Encapsulant" ;
+    rdfs:subClassOf mds:Encapsulant ;
+    skos:altLabel "BackSideEncapsulant" ;
+    skos:definition "Back side of the module's encapsulant." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:BackSideEncapsulantModel a owl:Class ;
+    rdfs:label "Back Side Encapsulant Model" ;
+    rdfs:subClassOf mds:ModelID ;
+    skos:altLabel "Back Side EncapsulantModel" ;
+    skos:definition "Back side encapsulant identifier given by the supplier based on the encapsulant optical absorption property." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:Backsheet a owl:Class ;
+    rdfs:label "Backsheet" ;
+    owl:disjointWith mds:PhotovoltaicModule ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel "Backsheet" ;
+    skos:definition "Outermost layer for a solar panel, protecting it from harsh, varying environmental conditions over panel lifetimes." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" ;
+    cco:ont00001754 "https://www.dupont.com/products/tedlar-backsheets.html#:~:text=Backsheets%20are%20the%20outermost%20%E2%80%9Clayer,environmental%20conditions%20over%20panel%20lifetimes." .
+
+mds:BacksheetProductModel a owl:Class ;
+    rdfs:label "Backsheet Product Model" ;
+    rdfs:subClassOf mds:ModelName ;
+    skos:altLabel "Backsheet Product Model" ;
+    skos:definition "Type of the module's backsheet used for the PV module, e.g., TPT, Tedlar." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:BacksheetArchitecture a owl:Class ;
+    rdfs:label "Backsheet Architecture" ;
+    rdfs:subClassOf mds:Backsheet ;
+    skos:altLabel "BacksheetArchitecture" ;
+    skos:definition "Architecture of the sample's backsheet, i.e double glass (DG) or glass backsheet (GB) for solar panels." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:WaterVaporTransmission a owl:Class ;
+    rdfs:label "Water Vapor Transmission Substance" ;
+    rdfs:subClassOf cco:ont00000908 ;
+    skos:altLabel "BacksheetVTSubstance" ;
+    skos:definition "The substance whose vapor is being tracked (i.e water) for the backsheet." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:BacksheetOuterLayer a owl:Class ;
+    rdfs:label "Backsheet Outer Layer" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    owl:disjointWith mds:Backsheet ;
+    skos:altLabel "BacksheetOuterLayer" ;
+    skos:definition "Outer layer of the module's backsheet layers." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:BacksheetCoreLayer a owl:Class ;
+    rdfs:label "Backsheet Core Layer" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    owl:disjointWith mds:Backsheet ;
+    skos:altLabel "BacksheetCoreLayer" ;
+    skos:definition "Core layer of the backsheet." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:BacksheetInnerLayer a owl:Class ;
+    rdfs:label "Backsheet Inner Layer" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    owl:disjointWith mds:Backsheet ;
+    skos:altLabel "BacksheetInnerLayer" ;
+    skos:definition "Inner layer of the backsheet." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:Flux a owl:Class ;
+    rdfs:label "Flux" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel " " ;
+    skos:definition "Chemical substance used to aid in soldering to improve the flow and adhesion of solder to ensure reliable connections between components of a sample." ;
+    mds:hasDomain "BuiltEnv" ; 
+    mds:hasSubDomain "PV-Module" .
+
+mds:FluxModel a owl:Class ;
+    rdfs:label "Flux Model" ;
+    rdfs:subClassOf mds:ModelID ;
+    skos:altLabel "FluxModel" ;
+    skos:definition "Identifier attached to the flux." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:FrontGlass a owl:Class ;
+    rdfs:label "Front Glass" ;
+    rdfs:subClassOf mds:Materials ;
+    skos:altLabel "FrontGlass" ;
+    skos:definition "Front glass used for the sample's enclosure." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:Coating a owl:Class ;
+    rdfs:label "Coating" ;
+    rdfs:subClassOf cco:ont00000908 ;
+    skos:altLabel "Coating" ;
+    skos:definition "Process of applying a covering to the surface of an object, or substrate." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    cco:ont00001754 "https://en.wikipedia.org/wiki/Coating" .
+
+mds:AntiReflectiveCoating a owl:Class ;
+    rdfs:label "Anti Reflective Coating" ;
+    rdfs:subClassOf cco:ont00000908 ;
+    skos:altLabel "AntiReflectiveCoating", "AntiGlareCoating" ;
+    skos:definition "A type of optical coating applied to the surface of lenses, other optical elements, and photovoltaic cells to reduce reflection." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" ;
+    cco:ont00001754 "https://en.wikipedia.org/wiki/Anti-reflective_coating#:~:text=An%20antireflective%2C%20antiglare%20or%20anti,is%20lost%20due%20to%20reflection." .
+
+mds:InterconnectTab a owl:Class ;
+    rdfs:label "Interconnect Tab" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel "InterconnectTab" ;
+    skos:definition "Metal strip that connects solar cells in a photovoltaic module." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:InterconnectRibbon a owl:Class ;
+    rdfs:label "Interconnect Ribbon" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel "InterconnectRibbons" ;
+    skos:definition "Conductive ribbon connecting cell strings or modules." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:JunctionBox a owl:Class ;
+    rdfs:label "Junction Box" ;
+    rdfs:subClassOf cco:ont00000162 ;
+    skos:altLabel "JunctionBox" ;
+    skos:definition "An enclosure on the PV module that connects strings electrically." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:JunctionBoxNumber a owl:Class ;
+    rdfs:label "Junction Box Number" ;
+    rdfs:subClassOf mds:Number ;
+    skos:altLabel "JunctionBoxNumber", "number-junction-box" ;
+    skos:definition "Total number of junction boxes present on the sample." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:JunctionBoxModel a owl:Class ;
+    rdfs:label "Junction Box Model" ;
+    rdfs:subClassOf mds:ModelName ;
+    skos:altLabel "Junction Box Model" ;
+    skos:definition "Model identifier for the junction box." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:Adhesive a owl:Class ;
+    rdfs:label "Adhesive" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel " " ;
+    skos:definition "Adhesive used to mount the junction box." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+mds:Potting a owl:Class ;
+    rdfs:label "Potting" ;
+    rdfs:subClassOf cco:ont00000908 ;
+    skos:altLabel " " ;
+    skos:definition "Process of encapsulating sample's components with a material to protect them from environmental stresses; in PV module, PV is usually done on the junction box." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Module" .
+
+##########################
+
+###### PV-CELL ###########
+
+##########################
+
+mds:CellID a owl:Class ;
+    rdfs:label "CellID" ;
+    rdfs:subClassOf mds:SampleID ;
+    skos:definition "Identifier for the PV cell" ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:CellProperty a owl:Class ;
+    rdfs:label "CellProperty" ;
+    rdfs:subClassOf cco:ont00000127 ;
+    skos:definition "A property of a PV cell" ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:CellTechnology a owl:Class ;
+    rdfs:label "Cell Technology" ;
+    rdfs:subClassOf cco:ont00000995;
+    skos:altLabel "CellTechnology" ;
+    skos:definition "Cell architecture or technology used for the solar cell (i.e., Al-BSF, PERC, PERT, MWT, IBC, SHJ)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:CellArea a owl:Class ;
+    rdfs:label "Cell Area" ;
+    rdfs:subClassOf cco:ont00001065 ;
+    skos:altLabel " " ;
+    skos:definition "Area of the solar cell, used to calculated the module active area" ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:Wafer a owl:Class ;
+    rdfs:label "Wafer" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel " " ;
+    skos:definition "Wafer-related characteristics of the solar cell." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:WaferCrystallinity a owl:Class ;
+    rdfs:label "Wafer Crystallinity" ;
+    rdfs:subClassOf mds:Wafer ;
+    skos:altLabel "Cell Type" ;
+    skos:definition "Distinguishes whether the silicon wafer was manufactured as a single crystal, multiple crystals, or no crystal (amorphous); if not silicon, another value is used such as THIN FILM." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:WaferDopingPolarity a owl:Class ;
+    rdfs:label "Wafer Doping Polarity" ;
+    rdfs:subClassOf mds:Wafer ;
+    skos:altLabel "doping" ;
+    skos:definition "Doping polarity of absorber. E.g., n-type or p-type." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:WaferBatchNumber a owl:Class ;
+    rdfs:label "Wafer Batch Number" ;
+    rdfs:subClassOf mds:BatchNumber;
+    skos:altLabel "WaferBatchNumber" ;
+    skos:definition "Batch number of the cell wafers." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+    
+mds:AluminumBackSurfaceField a owl:Class ;
+    rdfs:label "Aluminum Back Surface Field" ;
+    rdfs:subClassOf mds:CellTechnology ;
+    skos:altLabel "AluminumBackSurfaceField", "Al-BSF" ;
+    skos:definition "Cell architecture or technology used for solar cells." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:PassivatedEmitterRearCell a owl:Class ;
+    rdfs:label "Aluminum Back Surface Field" ;
+    rdfs:subClassOf mds:CellTechnology ;
+    skos:altLabel "AluminumBackSurfaceField", "PERC" ;
+    skos:definition "Cell architecture or technology used for solar cells." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:CellBatchNumber a owl:Class ;
+    rdfs:label "Cell Batch Number" ;
+    rdfs:subClassOf mds:BatchNumber ;
+    skos:altLabel "Cell Batch Number" ;
+    skos:definition "Batch number identifier of the cell." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:InterconnectBusbar a owl:Class ;
+    rdfs:label "Interconnect Busbar" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel "InterconnectBusbar" ;
+    skos:definition "Interconnection features of the solar cell." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:InterconnectBusbarRelativeOrientation a owl:Class ;
+    rdfs:label "Interconnect Busbar Relative Orientation" ;
+    rdfs:subClassOf obo:BFO_0000019 ;
+    skos:altLabel "BusbarRelativeOrientation" ;
+    skos:definition "Relative orientation of busbars with respect to the module's width (perpendicular or parallel if the module is rectangular and none if the module is square)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:InterconnectBusbarNumber a owl:Class ;
+    rdfs:label "Interconnect Busbars Number" ;
+    rdfs:subClassOf mds:Number ;
+    skos:altLabel "InterconnectBusbarsNumber" ;
+    skos:definition "Number of busbars used in the cell; non-ribbon based technologies show none." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+mds:Electrode a owl:Class ;
+    rdfs:label "Electrode" ;
+    rdfs:subClassOf cco:ont00000995 ;
+    skos:altLabel " " ;
+    skos:definition " " ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Cell" .
+
+
+#######################################
+
+######### PV-CHARGE-CONTROLLER ########
+
+#######################################
+
+mds:ChargeControllerType a owl:Class ;
+    rdfs:label "Charge Controller Type" ;
+    rdfs:subClassOf mds:PhotovoltaicChargeControllerProperty ;
+    skos:altLabel "ChargeControllerType" ;
+    skos:definition "Charge controller type." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-CrgCont" .
+
+mds:OutputCurrent a owl:Class ;
+    rdfs:label "Output Current" ;
+    rdfs:subClassOf mds:PhotovoltaicChargeControllerProperty ;
+    skos:altLabel "OutputCurrent" ;
+    skos:definition "Charge controller output voltage [A-dc]." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-CrgCont" .
+
+mds:OutputVoltage a owl:Class ;
+    rdfs:label "Output Voltage" ;
+    rdfs:subClassOf mds:PhotovoltaicChargeControllerProperty ;
+    skos:altLabel "OutputVoltage" ;
+    skos:definition "Charge controller output voltage [V-dc]." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-CrgCont" .
+
+
+##########################
+
+####### PV-SITE ##########
+
+###########################
+
+mds:Inverter a owl:Class ;
+    rdfs:label "Inverter" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel " " ;
+    skos:definition "An inverter to convert DC to AC." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:Racking a owl:Class ;
+    rdfs:label "Racking" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel " " ;
+    skos:definition "How samplees (i.e. PV modules) are arranged within the system." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+  
+mds:PhotovoltaicSite a owl:Class ;
+    rdfs:label "Photovoltaic Site" ;
+    rdfs:subClassOf obo:BFO_0000029 ;
+    skos:altLabel "PhotovoltaicSite" ;
+    skos:definition "Physical location of a PV site." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:SiteID a owl:Class ;
+    rdfs:label "Site ID" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel "SiteID" ;
+    skos:definition "Site identifier." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:SiteNote a owl:Class ;
+    rdfs:label "Site Note" ;
+    rdfs:subClassOf cco:ont00000958 ;
+    skos:altLabel "SiteNote" ;
+    skos:definition " " ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:SiteParameter a owl:Class ;
+    rdfs:label "Site Parameter" ;
+    rdfs:subClassOf mds:Recipe ;
+    skos:altLabel "SiteParameter" ;
+    skos:definition "Parameter or property a site has." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:PlaneOfArrayIrradiance a owl:Class ;
+    rdfs:label "Plane Of Array Irradiance" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "IrrPOA" ;
+    skos:definition "Parameter or property a site has." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:RackingType a owl:Class ;
+    rdfs:label "Racking Type" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel "RackingType" ;
+    skos:definition "Type of racking used (open, closed, roof, etc)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:TrackingAlgorithm a owl:Class ;
+    rdfs:label "Tracking Algorithm" ;
+    rdfs:subClassOf mds:Model ;
+    skos:altLabel "TrackingAlgorithm" ;
+    skos:definition "If system is tracking, method used (truetracking, backtracking, diffuse tracking, etc)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:WindDirection a owl:Class ;
+    rdfs:label "Wind Direction" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "WindDir" ;
+    skos:definition " " ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:WindSpeed a owl:Class ;
+    rdfs:label "Wind Speed" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "WindSpeed" ;
+    skos:definition " " ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:AmbientTemperature a owl:Class ;
+    rdfs:label "Ambient Temperature" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "AmbTemp" ;
+    skos:definition " " ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:ClimateZone a owl:Class ;
+    rdfs:label "Climate Zone" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "ClimateZone" ;
+    skos:definition " " ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:Elevation a owl:Class ;
+    rdfs:label "Elevation" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel " " ;
+    skos:definition "Elevation above sea level." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:Latitude a owl:Class ;
+    rdfs:label "Latitude" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "Lat" ;
+    skos:definition "North/south position of a point on the Earth, decimal format." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:Longitude a owl:Class ;
+    rdfs:label "Longitude" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "Long", "lon" ;
+    skos:definition "East/west position of a point on the Earth, decimal format." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:MountingType a owl:Class ;
+    rdfs:label "Mounting Type" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel "MountType" ;
+    skos:definition "How the arrays are mounted (fixed, one axis tracker, two axis tracker, vertical, etc)." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
+
+mds:NumberInverters a owl:Class ;
+    rdfs:label "Number Inverters" ;
+    rdfs:subClassOf mds:SiteParameter ;
+    skos:altLabel "WindDir" ;
+    skos:definition "Number of inverters located at the site." ;
+    mds:hasDomain "BuiltEnv" ;
+    mds:hasSubDomain "PV-Site" .
