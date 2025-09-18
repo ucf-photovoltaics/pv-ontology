@@ -762,3 +762,468 @@ mds:NumberInverters a owl:Class ;
     skos:definition "Number of inverters located at the site." ;
     mds:hasDomain "BuiltEnv" ;
     mds:hasSubDomain "PV-Site" .
+###########################
+
+###### Current-Voltage Measurement ###########
+
+###########################
+
+mds:SimulatorToolModel a owl:Class ;
+    rdfs:label "Simulator Tool Model" ;
+    rdfs:subClassOf mds:ToolModel ;
+    skos:altLabel " " ; 
+    skos:definition "The model of the solar simulator, i.e. FMT-350." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SimulatorToolSerialNo a owl:Class ;
+    rdfs:label "Simulator Tool Model No" ;
+    rdfs:subClassOf mds:ToolSerialNo ;
+    skos:altLabel " " ; 
+    skos:definition "The serial number of a solar simulator." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SolarSimulatorID a owl:Class ;
+    rdfs:label "Solar Simulator ID" ; 
+    rdfs:subClassOf mds:ToolID ;
+    skos:altLabel " " ; 
+    skos:definition "The identification number of a solar simulator." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SolarSimulatorManufacturer a owl:Class ;
+    rdfs:label "Solar Simulator Manufacturer" ;
+    rdfs:subClassOf mds:ToolManufacturer ;
+    skos:altLabel " " ; 
+    skos:definition "The manufacturer of a solar simulator, i.e. 'Sinton Instruments'." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SolarSimulatorName a owl:Class ;
+    rdfs:label "Solar Simulator Name" ; 
+    rdfs:subClassOf mds:ToolName ;
+    skos:altLabel " " ; 
+    skos:definition "The name of a solar simulator, i.e. 'Lab 1 Simulator'." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageMeasurment a owl:Class ;
+    rdfs:label "Current Voltage Measurement" ; 
+    rdfs:subClassOf cco:ont00000958 ;
+    skos:altLabel "IV Curve", "Trace" ; 
+    skos:definition "A current-voltage measurement is a fundamental technique used to characterize the electrical behavior of devices and materials by analyzing the relationship between the voltage applied and the resulting current flow. ." ;
+    mds:hasDomain "Charact" ; 
+    mds:hasSubDomain "Elec" . 
+
+mds:CurrentVoltageRecipeAuthor a owl:Class ;
+    rdfs:label "Current Voltage Recipe Author" ; 
+    rdfs:subClassOf cco:ont00001262 ;
+    skos:altLabel " " ; 
+    skos:definition "The author of a recipe for a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageRecipeCreatedDate a owl:Class ;
+    rdfs:label "Current Voltage Recipe Create Date" ;
+    rdfs:subClassOf cco:ont00000529 ;
+    skos:altLabel " " ; 
+    skos:definition "The creation date for a current voltage process recipe." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageRecipeID a owl:Class ;
+    rdfs:label "Currrent Voltage Recipe ID" ;
+    rdfs:subClassOf mds:RecipeID ;
+    skos:altLabel " " ; 
+    skos:definition "The identification number for a current voltage recipe." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageResultsTimestamp a owl:Class ;
+    rdfs:label "Current Voltage Results Timestamp" ;
+    rdfs:subClassOf mds:Date ;
+    skos:altLabel " " ; 
+    skos:definition "The datetime when a current voltage process was executed." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:LoadVoltage a owl:Class ;
+    rdfs:label "Load Voltage" ; 
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel "LoadV" ;
+    skos:definition "The standard testing condition load voltage of a sample being measured." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" ;
+    qudt:applicableUnit unit:MilliV .
+
+mds:CurrentVoltageStepSize a owl:Class ;
+    rdfs:label "Current Voltage Step Size" ; 
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel " " ; 
+    skos:definition "The step size of the voltage for a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" ;
+    qudt:applicableUnit unit:MilliV .
+
+mds:SampleCellArea a owl:Class ;
+    rdfs:label "Sample Cell Area" ;
+    rdfs:subClassOf mds:Sample ;
+    skos:altLabel " " ; 
+    skos:definition "Area of an invididual cell within a module that a current voltage process is being performed on." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" ;
+    qudt:applicableUnit unit:CentiM .
+
+mds:SampleTotalArea a owl:Class ;
+    rdfs:label "Sample Total Area" ; 
+    rdfs:subClassOf mds:Sample ;
+    skos:altLabel "Panel Area" ;
+    skos:definition "Total area of the module that a current voltage process is being performed on." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" ;
+    qudt:applicableUnit unit:CentiM .
+
+mds:SimulatorSpatialUniformity a owl:Class ;
+    rdfs:label "Simulator Spatial uniformity" ; 
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel " " ; 
+    skos:definition "The spational uniformity of a simulator." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CellEfficiency a owl:Class ;
+    rdfs:label "Cell Eficiency" ; 
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel " " ; 
+    skos:definition "The cell efficiency measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CellReferenceConstant a owl:Class ;
+    rdfs:label "Cell Reference Constant" ; 
+    rdfs:subClassOf cco:ont00000581 ;
+    rdfs:label "Cell Reference Constant" ; 
+    skos:definition "Calibration constant for the illumination sensor. This value effectively tells the system what voltage level output by the illumination sensor is equal to 1-sun irradiance. This value is automatically updated during a calibration routine. " ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentAtMaxPower a owl:Class ;
+    rdfs:label "Current At Max Power" ; 
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Imp" ; 
+    skos:definition "The current at max power measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageAnalysis a owl:Class ;
+    rdfs:label "Current Voltage Analysis" ;
+    rdfs:subClassOf mds:Analysis ;
+    skos:altLabel " " ; 
+    skos:definition "The analysis method used on a raw dataset generated by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageData a owl:Class ;
+    rdfs:label "Current Voltage Data" ; 
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel " " ; 
+    skos:definition "Data contained within results file, typically in the form of line itemed metadata and settings, followed by current voltage arrays." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageResults a owl:Class ;
+    rdfs:label "Current Voltage Results" ; 
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel " " ; 
+    skos:definition "The parameters that resulted from the current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageSample a owl:Class ;
+    rdfs:label "Current Voltage Sample" ;
+    rdfs:subClassOf mds:Sample ;
+    skos:altLabel " " ; 
+    skos:definition "A sample used in a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:FacilityAmbientTemperature a owl:Class ;
+    rdfs:label "Facility Ambient Temperature" ; 
+    rdfs:subClassOf mds:SiteParameter ,
+                    cco:ont00000441 ;
+    skos:altLabel " " ; 
+    skos:definition "The ambient temperature of the room that a current voltage process is being performed in." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:FillFactor a owl:Class ;
+    rdfs:label "Fill Factor" ; 
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "FF" ; 
+    skos:definition "The fill factor measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:FlashWaitTime a owl:Class ;
+    rdfs:label "Flash Wait Time" ;
+    rdfs:subClassOf obo:BFO_0000202 ;
+    skos:altLabel " " ; 
+    skos:definition "The amount of time between flash pulses." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:LoadPulseLength a owl:Class ;
+    rdfs:label "Load Pulse Length" ; 
+    rdfs:subClassOf obo:BFO_0000144 ;
+    skos:altLabel "SweepLength" ; 
+    skos:definition "The amount of time data is acquired during flash pulses." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:MaximumPowerPoint a owl:Class ;
+    rdfs:label "Maximum Power Point" ; 
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Pmp" , "Pmax" ; 
+    skos:definition "The maximum power point measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:OpenCircuitVoltage a owl:Class ;
+    rdfs:label "Open Circuit Voltage" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel " Voc" ;
+    skos:definition "The open circuit voltage measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SampleResistivity a owl:Class ;
+    rdfs:label "Sample Resistivity" ; 
+    rdfs:subClassOf mds:Sample ;
+    skos:altLabel "  " ; 
+    skos:definition "Resistivity of the sample that a current voltage is being performed on." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SaturationCurrentDensity a owl:Class ;
+    rdfs:label "Saturation Current Density" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel " " ; 
+    skos:definition "The saturation current density measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SeriesResistance a owl:Class ;
+    rdfs:label "Series Resistance" ; 
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Rs" ;
+    skos:definition "The series resistance measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:ShortCircuitCurrent a owl:Class ;
+    rdfs:label "Short Circuit Current" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Isc" ;
+    skos:definition "The short circuit current measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:ShuntResistance a owl:Class ;
+    rdfs:label "Shunt Resistance" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Rsh" ;
+    skos:definition "The shunt resistance measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SimulatorCurrentRange a owl:Class ;
+    rdfs:label "Simulartor Current Range" ; 
+    rdfs:subClassOf cco:ont00000965 ;
+    skos:altLabel " " ; 
+    skos:definition "The working range of the current of a simulator." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SimulatorIntensityRange a owl:Class ;
+    rdfs:label "Simulator Intensity Range" ; 
+    rdfs:subClassOf cco:ont00000965 ;
+    skos:altLabel " " ; 
+    skos:definition "The working range of the intensity of a simulator." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SimulatorVoltageRange a owl:Class ;
+    rdfs:label "Simulator Voltage Range" ; 
+    rdfs:subClassOf cco:ont00000965 ;
+    skos:altLabel " " ; 
+    skos:definition "The working range of the voltage of a simulator." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SolarSimulator a owl:Class ;
+    rdfs:label "Solar Simulator" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel " " ; 
+    skos:definition "A tool used to simulate the environment of a sun for a PV module, to perform a current voltage measurement." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SunIntensity a owl:Class ;
+    rdfs:label "Sun Intensity" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel "LampI" ;
+    skos:definition "The established intensity of a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:VoltageAtMaxPower a owl:Class ;
+    rdfs:label "Voltage At Max Power" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Vmp" ;
+    skos:definition "The voltage at max power measured by a current voltage process." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:NumberOfCellsPerString a owl:Class ;
+    rdfs:label "Number Of Cells Per String" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel "Segs in Ser" ;
+    skos:definition "Number of cells in a group of solar panels connected in series in a module." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:NumberStrings a owl:Class ;
+    rdfs:label "Number Strings" ;
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel " " ; 
+    skos:definition "Number of groups of solar panels connected in series in a module." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SimulatorMeasurementType a owl:Class ;
+    rdfs:label "Simulator Measurement Type" ; 
+    rdfs:subClassOf cco:ont00000581 ;
+    skos:altLabel " " ; 
+    skos:definition "Type of measurement a simulator is performing." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:VoltageTemperatureCoefficient a owl:Class ;
+    rdfs:label "Voltage Temperature Coefficient" ; 
+    rdfs:subClassOf mds:Sample ;
+    skos:altLabel " " ; 
+    skos:definition "The amount a cell's output voltage changes due to temperature." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentVoltageRecipe a owl:Class ;
+    rdfs:label "Current Voltage Recipe" ; 
+    rdfs:subClassOf mds:Recipe ;
+    skos:altLabel " " ; 
+    skos:broader mds:Recipe ;
+    skos:definition "These files configure the software for specific tests or device types/sizes." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:VoltageLoad a owl:Class ;
+    rdfs:label "Voltage Load" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Vload" , "Vld" ; 
+    skos:definition "The voltage measured across a load (like a resistor, light bulb, or appliance) when it is connected and drawing current." ;
+    qudt:applicableUnit unit:MilliV ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CurrentAtVoltageLoad a owl:Class ;
+    rdfs:label "Current At Voltage Load" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Ivld" ;
+    skos:definition "The current at voltage load, measured in Amperes." ;
+    qudt:applicableUnit unit:A ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:PowerAtVoltageLoad a owl:Class ;
+    rdfs:label "Power At Voltage Load" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Pvld" ;
+    skos:definition "The power at voltage load, measured in Volts." ;
+    qudt:applicableUnit unit:V ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SegmentsPerParallelString a owl:Class ;
+    rdfs:label "Segments Per Parallel String" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "Segs per Par" ; 
+    skos:definition "Number of cells in a parallel string." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:Frequency a owl:Class ;
+    rdfs:label "Frequency" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel " " ; 
+    skos:definition "Number of points taken, or occurances of I-V points." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SweepSlope a owl:Class ;
+    rdfs:label "Sweep Slope" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+     skos:altLabel " " ; 
+    skos:definition "Generated by sweeping the voltage over a defined range and measuring current." ;
+    qudt:applicableUnit unit:V_PER_SEC ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:SweepDirection a owl:Class ;
+    rdfs:label "Sweep Direction" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "SweepDir" ;
+    skos:definition "Order in which voltage is applied to a device during a measurement." ;
+    qudt:applicableUnit unit:V_PER_SEC ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:IntensityVoltage a owl:Class ;
+    rdfs:label "Intensity Voltage" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "IntV" ;
+    skos:definition "Voltage at which the first I-V point after the short-circuit current is taken." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:PulseWidth a owl:Class ;
+    rdfs:label "Pulse Width" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel " " ; 
+    skos:definition "Duration of a lamp pulse, measured in milliseconds." ;
+    qudt:applicableUnit unit:MilliSEC ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:CorrectionFactor a owl:Class ;
+    rdfs:label "Correction Factor" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "RCCC" ; 
+    skos:definition "Calibration constant for the illumination sensor. This value effectively tells the system what voltage level output by the illumination sensor is equal to 1-sun irradiance." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:ReferenceTemperature a owl:Class ;
+    rdfs:label "Reference Temperature" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "TRef" ; 
+    skos:definition "An offset used to adjust the measured reference cell temperature so that it matches the temperature measured by a calibrated reference device." ;
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
+mds:MultiCurveMode a owl:Class ;
+    rdfs:label "MultiCurve Mode" ;
+    rdfs:subClassOf mds:AnalyticalResult;
+    skos:altLabel "MCMode" ; 
+    mds:hasDomain "Charact" ;
+    mds:hasSubDomain "Elec" .
+
